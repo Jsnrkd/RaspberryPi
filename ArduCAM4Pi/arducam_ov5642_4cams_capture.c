@@ -204,7 +204,7 @@ int main(int argc, char *argv[])
 		  	if (len3 == 0 ) printf("Size3 is 0."); 
 		  		if (len4 == 0 ) printf("Size4 is 0."); 
 		  			
-      int32_t i=0; 
+      int32_t i=1; 
       digitalWrite(CAM1_CS,LOW);  //Set CS1 low       
       set_fifo_burst(BURST_FIFO_READ);
       arducam_spi_transfers(buffer,1);//dummy read  
@@ -214,7 +214,7 @@ int main(int argc, char *argv[])
       	len1 -= 4096; i += 4096;
       }
       arducam_spi_transfers(&buffer[i],len1); 
-      fwrite(buffer, len1+i, 1, fp1); i=0;
+      fwrite(buffer, len1+i, 1, fp1); i=1;
       digitalWrite(CAM1_CS,HIGH);  //Set CS1 HIGH
       
         
@@ -227,7 +227,7 @@ int main(int argc, char *argv[])
       	len2 -= 4096; i += 4096;
       }
       arducam_spi_transfers(&buffer[i],len2); 
-      fwrite(buffer, len2+i, 1, fp2); i=0;
+      fwrite(buffer, len2+i, 1, fp2); i=1;
       digitalWrite(CAM2_CS,HIGH);  //Set CS2 HIGH
         
       
@@ -240,7 +240,7 @@ int main(int argc, char *argv[])
       	len3 -= 4096; i += 4096;
       }
       arducam_spi_transfers(&buffer[i],len3); 
-      fwrite(buffer, len3+i, 1, fp3); i=0;
+      fwrite(buffer, len3+i, 1, fp3); i=1;
       digitalWrite(CAM3_CS,HIGH);  //Set CS3 HIGH
       
       
@@ -253,7 +253,7 @@ int main(int argc, char *argv[])
       	len4 -= 4096; i += 4096;
       }
       arducam_spi_transfers(&buffer[i],len4); 
-      fwrite(buffer, len4+i, 1, fp4); i=0;
+      fwrite(buffer, len4+i, 1, fp4); i=1;
       digitalWrite(CAM4_CS,HIGH);  //Set CS4 HIGH
       
       // Close the file
